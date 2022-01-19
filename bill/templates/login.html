@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>泽泽记账系统</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
+    <style>
+        .account {
+            width: 400px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            box-shadow: 5px 5px 20px #aaa;
+
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+            padding: 20px 40px;
+        }
+
+        .account h2 {
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body style="background-image: url({% static 'image/background.jpg' %});background-size:100% 200%;">
+<div class="account">
+    <h2>泽 泽 记 账</h2>
+    <br><br><br>
+    <form method="post" novalidate>        <!--post方法-->
+        <form method="get">
+        {% csrf_token %}        <!--防止报错-->
+        <div class="form-group" >
+            <label >用户名</label>
+            {{ form.user_name }}
+            <span style="color: red;">{{ form.user_name.errors.0 }}</span>
+        </div>
+        <br>
+        <div class="form-group">
+            <label>密码</label>
+            {{ form.user_password }}
+            <span style="color: red;">{{ form.user_password.errors.0 }}</span>
+        </div>
+        <div style="text-align: center">
+            <a href="" style="text-decoration:none;color: aliceblue">
+                <font size="2">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;忘记密码？
+                </font>
+            </a>
+        </div>
+        <div style="text-align: center; color: red">{{ error }}</div>
+        <div style="text-align: center">
+
+           <button type="submit"  style="background-color:rgba(255,0,0,0);border-color:rgba(255,255,255,255);color: rgba(255, 255, 255,255);border-style:solid;border-width:2px;border-radius:9px;font:19px;width:140px;height:30px">
+               &nbsp;&nbsp;&nbsp;&nbsp;立即登录&nbsp;&nbsp;&nbsp;&nbsp;</button>
+            <a href="register"> <button type="button" style="background-color:rgba(255,0,0,0);border-color:rgba(255,255,255,255);color: rgba(255, 255, 255,255);border-style:solid;border-width:2px;border-radius:9px;font:19px;width:140px;height:30px ">
+                &nbsp;&nbsp;&nbsp;&nbsp;注册账户&nbsp;&nbsp;&nbsp;&nbsp;</button></a>
+        </div>
+        </form>
+    </form>
+
+</div>
+
+
+
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-3.4.1/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
